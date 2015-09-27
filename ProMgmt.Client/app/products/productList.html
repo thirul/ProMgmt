@@ -1,0 +1,22 @@
+﻿<div class="panel panel-primary" ng-controller="productController as vm">
+        
+    <div class="panel-heading">
+        Product List
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered table-striped" >
+            <tr>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Price</th>
+                <th>Date</th>
+            </tr>
+            <tr ng-repeat="product in vm.products">
+                <td>{{product.name}}</td>
+                <td>{{product.code}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product.date}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
