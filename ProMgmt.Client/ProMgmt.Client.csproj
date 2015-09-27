@@ -69,8 +69,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\app.js" />
+    <Content Include="app\common\common-services.js" />
     <Content Include="app\products\productController.js" />
     <Content Include="app\products\productList.html" />
+    <Content Include="app\products\productResource.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />

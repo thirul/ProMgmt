@@ -5,9 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+ 
 
 namespace ProMgmt.WebApi.Controllers
 {
+   [System.Web.Http.Cors.EnableCors("http://localhost:53784", "*", "*")]
     public class ProductController : ApiController
     {
         public IEnumerable<Product> Get()
