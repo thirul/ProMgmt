@@ -1,6 +1,0 @@
-E:\Projects\ProMgmt\ProMgmt.Client\bin\ProMgmt.Client.dll.config
-E:\Projects\ProMgmt\ProMgmt.Client\bin\ProMgmt.Client.dll
-E:\Projects\ProMgmt\ProMgmt.Client\bin\ProMgmt.Client.pdb
-E:\Projects\ProMgmt\ProMgmt.Client\obj\Debug\ProMgmt.Client.csprojResolveAssemblyReference.cache
-E:\Projects\ProMgmt\ProMgmt.Client\obj\Debug\ProMgmt.Client.dll
-E:\Projects\ProMgmt\ProMgmt.Client\obj\Debug\ProMgmt.Client.pdb
