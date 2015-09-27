@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProMgmt.WebApi", "ProMgmt.WebApi\ProMgmt.WebApi.csproj", "{1712CE43-4B42-4C22-B864-5BAB5316DAAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProMgmt.Client", "ProMgmt.Client\ProMgmt.Client.csproj", "{7F968C55-88B1-4BE1-B302-9017D5E78B8A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1712CE43-4B42-4C22-B864-5BAB5316DAAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1712CE43-4B42-4C22-B864-5BAB5316DAAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1712CE43-4B42-4C22-B864-5BAB5316DAAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1712CE43-4B42-4C22-B864-5BAB5316DAAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F968C55-88B1-4BE1-B302-9017D5E78B8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F968C55-88B1-4BE1-B302-9017D5E78B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F968C55-88B1-4BE1-B302-9017D5E78B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F968C55-88B1-4BE1-B302-9017D5E78B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
