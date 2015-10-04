@@ -1,4 +1,5 @@
 ﻿using ProMgmt.WebApi.Models;
+using ProMgmt.WebApi.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,28 +13,41 @@ namespace ProMgmt.WebApi.Controllers
    [System.Web.Http.Cors.EnableCors("http://localhost:53784", "*", "*")]
     public class ProductController : ApiController
     {
-        public IEnumerable<Product> Get()
-        {
-            return new List<Product>{
-                new Product{
-                     Name="Geeta",
-                     Code ="BG001",
-                     Price =12.12,
-                     PublishDate=DateTime.Now
-                },
-                  new Product{
-                     Name="Ishavasyam",
-                     Code ="BG002",
-                     Price =13.12,
-                     PublishDate=DateTime.Now
-                },
-                  new Product{
-                     Name="Bramhma Sutra",
-                     Code ="BG003",
-                     Price =32.12,
-                     PublishDate=DateTime.Now
-                }
-            };
-        }
+       ProductRepository productRepository;
+
+       public ProductController()
+       {
+           productRepository = new ProductRepository();
+       }
+
+       public IEnumerable<Product> Get()
+       {
+           return productRepository.Retrieve();
+       }
+
+       public IEnumerable<Product> Get(string search)
+       {
+           if (string.IsNullOrEmpty(search))
+               return Get();
+
+           return productRepository.Retrieve().Where(x => x.Code.Contains(search));
+       }
+
+       public Product Get(int id)
+       {
+           return productRepository.Retrieve().Where(x => x.Id == id).SingleOrDefault();
+       }
+
+       public void Post([FromBody] Product product)
+       {
+           productRepository.Save(product);
+       }
+       public void Put(int id, [FromBody] Product product)
+       {
+           productRepository.Save(id, product);
+       }
+
+
+      
     }
 }

@@ -19,7 +19,8 @@
 
     <div class="container">        
         <!-- for ng-include : include single quote inside  -->
-        <div ng-include="'app/products/productList.html'" />
+        <!--<div ng-include="'app/products/productListView.html'" />-->
+        <div ng-include="'app/products/productEditView.html'" />
     </div>
 
 
@@ -31,8 +32,10 @@
     <!-- app scripts-->
     <script src="app/app.js"></script>
     <script src="app/common/common-services.js"></script>
-    <script src="app/products/productResource.js"></script>
-    <script src="app/products/productController.js"></script>
+    <script src="app/common/productResource.js"></script>
+    <script src="app/products/productListViewCtrl.js"></script>
+    <script src="app/products/productEditCtrl.js"></script>
+   
     
 </body>
 </html>

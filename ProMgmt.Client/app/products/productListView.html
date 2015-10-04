@@ -1,0 +1,33 @@
+﻿
+<div ng-controller="productListCtrl as vm">
+
+    <div class="row">
+        <div class="col-md-3">
+            <input type="text" ng-model="vm.searchCode" placeholder="Search by code" />
+            <input type="button" value="Search" ng-click="vm.search()" />
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            Product List
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-bordered table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Price</th>
+                    <th>Date</th>
+                </tr>
+                <tr ng-repeat="product in vm.products">
+                    <td>{{product.name}}</td>
+                    <td>{{product.code}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.date}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
