@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Description;
  
 
 namespace ProMgmt.WebApi.Controllers
@@ -20,34 +21,110 @@ namespace ProMgmt.WebApi.Controllers
            productRepository = new ProductRepository();
        }
 
-       public IEnumerable<Product> Get()
+       [ResponseType(typeof(Product))]
+       public IHttpActionResult Get()
        {
-           return productRepository.Retrieve();
+           try{
+           
+            return Ok( productRepository.Retrieve());
+           }
+           catch(Exception ex)
+           {
+               return InternalServerError();
+           }
        }
 
-       public IEnumerable<Product> Get(string search)
+       [ResponseType(typeof(Product))]
+       public IHttpActionResult Get(string search)
        {
+           try{
            if (string.IsNullOrEmpty(search))
                return Get();
 
-           return productRepository.Retrieve().Where(x => x.Code.Contains(search));
+           return Ok(productRepository.Retrieve().Where(x => x.Code.Contains(search)));
+
+
+              }
+           catch(Exception ex)
+           {
+               return InternalServerError();
+           }
        }
 
-       public Product Get(int id)
+       [ResponseType(typeof(Product))]
+       public IHttpActionResult Get(int id)
        {
-           return productRepository.Retrieve().Where(x => x.Id == id).SingleOrDefault();
+           try{
+           var product= productRepository.Retrieve().Where(x => x.Id == id).SingleOrDefault();
+
+           if(product==null)
+           {
+               return NotFound();
+           }
+        
+           return Ok(product);
+
+              }
+           catch(Exception ex)
+           {
+               return InternalServerError();
+           }
        }
 
-       public void Post([FromBody] Product product)
+       [ResponseType(typeof(Product))]
+       public IHttpActionResult Post([FromBody] Product product)
        {
-           productRepository.Save(product);
-       }
-       public void Put(int id, [FromBody] Product product)
-       {
-           productRepository.Save(id, product);
-       }
+           try{
+           // arguments empty
+           if(product==null)
+           {
+               return BadRequest("Product cannot be null");
+           }
+
+           var newProduct = productRepository.Save(product);
+           // save failed
+           if(newProduct==null)
+           {
+               return Conflict();
+           }
+
+           // success
+           return Created<Product>(Request.RequestUri + newProduct.Id.ToString(), newProduct);
 
 
+              }
+           catch(Exception ex)
+           {
+               return InternalServerError();
+           }
+
+       }
+       
+       
+       public IHttpActionResult Put(int id, [FromBody] Product product)
+       {       
+           try{
+           // arguments empty
+           if (product == null)
+           {
+               return BadRequest("Product cannot be null");
+           }
+
+               var updateProduct = productRepository.Save(id, product);
+               // save failed
+               if (updateProduct == null)
+               {
+                   return NotFound();
+               }
+
+               return Ok();
+              }
+           catch(Exception ex)
+           {
+               return InternalServerError();
+           }
+
+       }
       
     }
 }

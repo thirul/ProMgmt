@@ -14,9 +14,19 @@
         get();
         
         function get() {
-            productResource.get({ id: 1 }, function (data) {
-                vm.product = data;
-            });
+            productResource.get({ id: 1 },
+                function (data) {
+                    vm.product = data;
+                },
+                function(response)
+                {
+                   
+                    vm.message = response.statusText + "\r\n";
+                    if(response.data.exceptionMessage)
+                    {
+                        vm.message += response.data.exceptionMessage;
+                    }
+                });
         };
 
         if(vm.product && vm.product.id)
