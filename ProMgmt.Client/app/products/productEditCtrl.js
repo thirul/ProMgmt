@@ -22,10 +22,12 @@
                 {
                    
                     vm.message = response.statusText + "\r\n";
+                    // handle the exceptions like internal server errors 
                     if(response.data.exceptionMessage)
                     {
                         vm.message += response.data.exceptionMessage;
                     }
+                    // handle the validation errors 
                 });
         };
 
@@ -41,15 +43,51 @@
 
             // put - update
             if (vm.product.id) {
-                vm.product.$update({ id: vm.product.id }, function (data) {
+                vm.product.$update({ id: vm.product.id },
+                    function (data) {
                     vm.message = 'update completed'
-                });
+                    },
+                    function (response)
+                    {
+                   
+                        vm.message = response.statusText + "\r\n";
+                        // handle the exceptions like internal server errors 
+                        if(response.data.exceptionMessage)
+                        {
+                            vm.message += response.data.exceptionMessage;
+                        }
+
+                        // handle the validation errors 
+                        if (response.data.modelState)
+                        {
+                            for(var key in response.data.modelState)
+                            {
+                                vm.message += response.data.modelState[key] + "\r\n";
+                            }
+                        }
+                    });
+
             }
             else // create new 
             {
                 vm.product.$save(function (data) {
                     vm.message = 'new completed';
-                });
+                },
+                 function (response) {
+
+                     vm.message = response.statusText + "\r\n";
+                     // handle the exceptions like internal server errors 
+                     if (response.data.exceptionMessage) {
+                         vm.message += response.data.exceptionMessage;
+                     }
+                     // handle the validation errors 
+                     // handle the validation errors 
+                     if (respose.data.modelState) {
+                         for (var key in response.data.modelState) {
+                             vm.message += response.data.modelState[key] + "\r\n";
+                         }
+                     }
+                 });
             }
 
         };

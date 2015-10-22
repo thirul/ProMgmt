@@ -81,6 +81,12 @@ namespace ProMgmt.WebApi.Controllers
                return BadRequest("Product cannot be null");
            }
 
+            // server side validations
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
            var newProduct = productRepository.Save(product);
            // save failed
            if(newProduct==null)
@@ -108,6 +114,11 @@ namespace ProMgmt.WebApi.Controllers
            if (product == null)
            {
                return BadRequest("Product cannot be null");
+           }
+           // server side validations
+           if (!ModelState.IsValid)
+           {
+               return BadRequest(ModelState);
            }
 
                var updateProduct = productRepository.Save(id, product);
