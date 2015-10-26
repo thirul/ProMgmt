@@ -21,6 +21,7 @@ namespace ProMgmt.WebApi.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
+    [System.Web.Http.Cors.EnableCors("http://localhost:53784", "*", "*")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";

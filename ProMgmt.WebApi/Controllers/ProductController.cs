@@ -12,6 +12,7 @@ using System.Web.Http.Description;
 namespace ProMgmt.WebApi.Controllers
 {
    [System.Web.Http.Cors.EnableCors("http://localhost:53784", "*", "*")]
+    [Authorize]
     public class ProductController : ApiController
     {
        ProductRepository productRepository;

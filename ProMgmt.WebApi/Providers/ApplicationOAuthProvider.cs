@@ -33,6 +33,9 @@ namespace ProMgmt.WebApi.Providers
 
             ApplicationUser user = await userManager.FindAsync(context.UserName, context.Password);
 
+            // allow cors - thiru for token service
+            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+
             if (user == null)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect.");

@@ -57,8 +57,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\common\currentUser.js" />
+    <Content Include="app\common\userAccount.js" />
+    <Content Include="app\mainCtrl.js" />
     <Content Include="app\products\productEditCtrl.js" />
     <Content Include="app\products\productEditView.html" />
+    <Content Include="app\state\state2.html" />
+    <Content Include="app\state\state1.html" />
+    <Content Include="Scripts\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui-router.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="packages.config" />
     <Content Include="Scripts\angular-resource.min.js.map" />
